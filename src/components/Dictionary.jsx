@@ -17,32 +17,30 @@ const Dictionary = () => {
   function searchHandler() {
     const word = inputRef.current.value;
     console.log(word);
-    if(word){
-        let flag = false;
-        for(let i = 0; i < dictionary.length; i++){
-            if(dictionary[i].word.toLowerCase() == word.toLowerCase()){
-                flag = true;
-                setMeaning(dictionary[i].meaning);
-                break;
-            }
-        }
-        if(!flag){
-            setMeaning("Word not found in the dictionary.");
-        }
-    }else{
-        setMeaning("");
+    let flag = false;
+    for (let i = 0; i < dictionary.length; i++) {
+      if (dictionary[i].word.toLowerCase() == word.toLowerCase()) {
+        flag = true;
+        setMeaning(dictionary[i].meaning);
+        break;
+      }
     }
-
+    if (!flag) {
+      setMeaning("Word not found in the dictionary.");
+    }
   }
 
-
-  return <div>
-    <h1>Dictionary App</h1>
-    <input ref={inputRef} placeholder="Searchfor word..." type="text" />
-    <button onClick={searchHandler}>Search</button>
-    <p><strong>Definition:</strong></p>    
-    {meaning && <p>{meaning}</p>}
-  </div>;
+  return (
+    <div>
+      <h1>Dictionary App</h1>
+      <input ref={inputRef} placeholder="Searchfor word..." type="text" />
+      <button onClick={searchHandler}>Search</button>
+      <p>
+        Definition:
+      </p>
+      {meaning ? <p>{meaning}</p> : null}
+    </div>
+  );
 };
 
 export default Dictionary;
