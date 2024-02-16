@@ -40,7 +40,7 @@ const Dictionary = () => {
     <h1>Dictionary App</h1>
     <input ref={inputRef} placeholder="Searchfor word..." type="text" />
     <button onClick={searchHandler}>Search</button>
-    <p><strong>Defination:</strong></p>    
+    <p><strong>Definition:</strong></p>    
     {meaning && <p>{meaning}</p>}
   </div>;
 };
