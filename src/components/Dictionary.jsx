@@ -16,14 +16,17 @@ const Dictionary = () => {
 
   function searchHandler() {
     const word = inputRef.current.value;
-
+    console.log(word);
     if(word){
+        let flag = false;
         for(let i = 0; i < dictionary.length; i++){
             if(dictionary[i].word.toLowerCase() == word.toLowerCase()){
+                flag = true;
                 setMeaning(dictionary[i].meaning);
+                break;
             }
         }
-        if(!meaning){
+        if(!flag){
             setMeaning("Word not found in the dictionary.");
         }
     }else{
